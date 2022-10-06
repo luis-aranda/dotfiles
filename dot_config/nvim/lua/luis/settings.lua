@@ -7,6 +7,9 @@ o.relativenumber = true
 o.autoindent = true
 o.tabstop = 2
 
+-- Set the leader key to backslash
+vim.g.mapleader = '\\'
+
 -- Colorscheme
 vim.cmd[[colorscheme tokyonight]]
 

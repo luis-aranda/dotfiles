@@ -2,8 +2,8 @@
 
 export PATH=$HOME/.local/bin:$PATH
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 ### SHOPT ###
 
@@ -95,8 +95,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias nv='~/.local/bin/nvim/AppRun'
-alias vim='~/.local/bin/nvim/AppRun'
+alias nv='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -129,5 +128,8 @@ function cat() {
 	fi
 }
 
-### Setting the Starship Prompt ###
+# Setting the starship prompt
 eval "$(starship init bash)"
+
+# Setting Z replacement (zoxide)
+eval "$(zoxide init bash)"
