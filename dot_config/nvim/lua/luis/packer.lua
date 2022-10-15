@@ -21,4 +21,7 @@ return require('packer').startup(function()
 	--Color scheme
 	use 'folke/tokyonight.nvim'
 
+	--vim surround
+	use 'tpope/vim-surround'
+
 end)
