@@ -7,7 +7,7 @@ o.relativenumber = true
 o.autoindent = true
 o.tabstop = 2
 
--- Set the leader key to backslash
+-- Set the leader key to space
 g.mapleader = ' '
 
 -- Colorscheme
