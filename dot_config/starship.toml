@@ -1,0 +1,12 @@
+[azure]
+disabled = false
+format = "on [$symbol($subscription)]($style) "
+symbol = " ﴃ "
+style = "blue bold"
+
+[shell]
+disabled = false
+fish_indicator = ""
+powershell_indicator = "_"
+unknown_indicator = "mystery shell"
+style = "cyan bold"
