@@ -26,6 +26,12 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+### SET VI MODE ###
+# Comment this line out to enable default emacs-like bindings
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
 ### SHOPT ###
 
 shopt -s autocd # change to named directory without using cd
@@ -116,13 +122,18 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias nv='nvim'
+alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Hunt down disk space hogs with ducks
 alias ducks='du -cks * | sort -rn | head'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
 
 # Modern Unix
 function ls() {
