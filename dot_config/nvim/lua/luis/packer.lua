@@ -24,4 +24,7 @@ return require('packer').startup(function()
 	--vim surround
 	use 'tpope/vim-surround'
 
+    --lspconfig
+    use 'neovim/nvim-lspconfig'
+
 end)

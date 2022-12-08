@@ -26,6 +26,11 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# use node version manager (https://github.com/nvm-sh/nvm) to install latest nodejs and npm (required for lsp)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings
 set -o vi

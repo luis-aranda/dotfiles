@@ -8,3 +8,6 @@ vim.keymap.set('v', '<Leader>y', '\"+y', {})
 
 -- Copy from system clipboard
 vim.keymap.set('n', '<Leader>p', '\"+p', {})
+
+-- Abbreviations
+vim.cmd[[iab _bash #! /usr/bin/env bash]]

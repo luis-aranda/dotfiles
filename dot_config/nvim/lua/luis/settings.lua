@@ -11,6 +11,11 @@ opt.expandtab = true
 
 opt.smartindent = true
 
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
 -- Set the leader key to space
 g.mapleader = ' '
 
