@@ -1,0 +1,2 @@
+# Don't add packer files
+packer_compiled.lua

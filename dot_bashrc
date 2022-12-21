@@ -140,6 +140,9 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
+# Always use sudo for UFW (Uncomplicated Firewall)
+alias ufw="sudo ufw"
+
 # Modern Unix
 function ls() {
 	if command -v /usr/bin/lsd &> /dev/null
