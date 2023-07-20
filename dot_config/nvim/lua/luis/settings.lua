@@ -1,25 +1,43 @@
 local g = vim.g
 local opt = vim.opt
-
-opt.number = true
-opt.relativenumber = true
-
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-
-opt.smartindent = true
-
-opt.hlsearch = false
-opt.incsearch = true
-
-opt.termguicolors = true
-
-opt.scrolloff = 8
+local o = vim.o
 
 -- Set the leader key to space
 g.mapleader = ' '
+g.maplocalleader = ' '
 
--- Colorscheme
-vim.cmd[[colorscheme tokyonight]]
+-- Show line numbers
+opt.number = true
+opt.relativenumber = true
+
+-- Enable mouse mode
+opt.mouse = "a"
+
+-- Every wrapped line will continue visually indented
+o.breakindent = true
+
+-- Save undo history
+o.undofile = true
+
+-- Case-insensitive searching UNLESS \C or capital in search
+o.ignorecase = true
+o.smartcase = true
+
+-- Set highlight on search
+opt.hlsearch = false
+
+-- Highlight the searc while typing
+opt.incsearch = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+o.updatetime = 250
+o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+o.completeopt = 'menuone,noselect'
+
+-- Enables 24-bit RGC color in the TUI
+opt.termguicolors = true

@@ -1,2 +1,3 @@
 require ('luis.settings')
-require ('luis.packer')
+require ('luis.lazy')
+require ('luis.keymap')
