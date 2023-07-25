@@ -114,7 +114,7 @@ esac
 HISTSIZE=1000
 HISTFILESIZE=2000
 HISTTIMEFORMAT="%d/%m/%y %T " # show the date and time when running the history command
-HISTCONTROL=ignoredups:erasedups # don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth:erasedups # don't put duplicate lines or lines starting with space in the history.
 
 ### Alias ###
 
@@ -176,3 +176,14 @@ eval "$(starship init bash)"
 
 # Setting Z replacement (zoxide)
 eval "$(zoxide init bash)"
+
+# Registering fzf shell extensions
+# shellcheck source=~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'batcat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="--preview 'lsd --tree {}'"
