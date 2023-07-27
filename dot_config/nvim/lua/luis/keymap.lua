@@ -48,7 +48,7 @@ if g.vscode then
 
     -- [[Toggle Comment on line selection]]
     local function toggleComment()
-        vim.fn.VSCodeNotifyRange("editor.action.commentLine", line("v"), line("."), 1)
+        vim.fn.VSCodeNotify("editor.action.commentLine")
     end
     vim.keymap.set({ "n", "v" }, "gcc", toggleComment, { desc = "Toggle Comment" })
 
