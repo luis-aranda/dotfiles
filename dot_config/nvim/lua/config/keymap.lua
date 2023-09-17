@@ -15,10 +15,10 @@ if g.vscode then
     vim.keymap.set("n", "<leader>e", openFileExplorer, { desc = "Open File Explorer" })
 
     -- [[Find in Files]]
-    local function findInFiles()
-        vim.fn.VSCodeNotify("workbench.action.findInFiles")
+    local function findFiles()
+        vim.fn.VSCodeNotify("workbench.action.quickOpen")
     end
-    vim.keymap.set("n", "<leader>ff", findInFiles, { desc = "Find in Files" })
+    vim.keymap.set("n", "<leader>ff", findFiles, { desc = "Find in Files" })
 
     -- [[Open New File]]
     local function newFile()
@@ -43,6 +43,13 @@ if g.vscode then
         vim.fn.VSCodeNotify("workbench.action.showAllEditors")
     end
     vim.keymap.set("n", "<leader>fb", showAllEditors, { desc = "Show all editors" })
+    
+    -- [[Show all Editors]]
+    local function liveGrep()
+        vim.fn.VSCodeNotify("workbench.action.findInFiles")
+    end
+    vim.keymap.set("n", "<leader>sg", liveGrep, { desc = "Show all editors" })
+
 
     -- [[Toggle Comment on normal and visual mode]]
     local function toggleComment()
@@ -94,6 +101,7 @@ else
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 end
 
 -- Keymaps that work on both VsCode and Neovim
@@ -105,8 +113,8 @@ vim.keymap.set('x', '<leader>dp', "\"_dP", { desc = '[dp] Delete without copying
 -- [[Copy to system clipboard]]
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '\"+y', { desc = '[y] Yank to clipboard' })
 
--- [[Copy from system clipboard]]
-vim.keymap.set('n', '<leader>p', '\"+p', { desc = '[p] Paste from clipboard' })
+-- [[Paste the contents from the system clipboard]]
+vim.keymap.set({ 'n', 'x' }, '<leader>pp', '\"+p', { desc = '[p] Paste from clipboard' })
 
 -- [[Highlight on yank]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

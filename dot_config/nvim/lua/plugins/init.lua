@@ -19,7 +19,7 @@ return {
 
 			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+			{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
 			'folke/neodev.nvim',
@@ -73,12 +73,21 @@ return {
 				changedelete = { text = '~' },
 			},
 			on_attach = function(bufnr)
-				vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-					{ buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-				vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk,
-					{ buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-				vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
-					{ buffer = bufnr, desc = '[P]review [H]unk' })
+				vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
+					{ buffer = bufnr, desc = 'Preview git hunk' })
+
+				-- don't override the built-in and fugitive keymaps
+				local gs = package.loaded.gitsigns
+				vim.keymap.set({ 'n', 'v' }, ']c', function()
+					if vim.wo.diff then return ']c' end
+					vim.schedule(function() gs.next_hunk() end)
+					return '<Ignore>'
+				end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+				vim.keymap.set({ 'n', 'v' }, '[c', function()
+					if vim.wo.diff then return '[c' end
+					vim.schedule(function() gs.prev_hunk() end)
+					return '<Ignore>'
+				end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
 			end,
 		},
 	},
@@ -118,7 +127,7 @@ return {
 	},
 
 	-- "gc" to comment visual regions/lines
-	{ 'numToStr/Comment.nvim', opts = {} },
+	{ 'numToStr/Comment.nvim',     opts = {} },
 
 	{
 		-- Highlight, edit, and navigate code

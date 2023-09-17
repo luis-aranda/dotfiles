@@ -5,14 +5,38 @@ return {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 	},
 	build = ':TSUpdate',
+	event = { 'BufReadPost', 'BufNewFile' },
 	config = function()
 		require('nvim-treesitter.configs').setup({
 			-- Add languages to be installed here that you want installed for treesitter
-			ensure_installed = { 'c', 'cpp', 'c_sharp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript',
-				'vimdoc', 'vim' },
+			ensure_installed = {
+				'bash',
+				'c',
+				'c_sharp',
+				'cpp',
+				'go',
+				'html',
+				'javascript',
+				'jsdoc',
+				'json',
+				'lua',
+				'luadoc',
+				'markdown',
+				'markdown_inline',
+				'python',
+				'regex',
+				'rust',
+				'tsx',
+				'typescript',
+				'vim',
+				'vimdoc',
+				'yaml',
+			},
 
 			-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 			auto_install = false,
+
+			sync_install = false,
 
 			highlight = { enable = true },
 			indent = { enable = true },
@@ -37,6 +61,8 @@ return {
 						['if'] = '@function.inner',
 						['ac'] = '@class.outer',
 						['ic'] = '@class.inner',
+						['al'] = '@loop.outer',
+						['il'] = '@loop.inner',
 					},
 				},
 				move = {
