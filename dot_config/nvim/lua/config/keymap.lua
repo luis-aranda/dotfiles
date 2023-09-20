@@ -38,18 +38,17 @@ if g.vscode then
     end
     vim.keymap.set("n", "<leader>fr", openRecentFiles, { desc = "Open Recent Files" })
 
-    -- [[Show all Editors]]
+    -- [[Show all open Editors]]
     local function showAllEditors()
         vim.fn.VSCodeNotify("workbench.action.showAllEditors")
     end
     vim.keymap.set("n", "<leader>fb", showAllEditors, { desc = "Show all editors" })
-    
-    -- [[Show all Editors]]
+
+    -- [[Search in all Editors]]
     local function liveGrep()
         vim.fn.VSCodeNotify("workbench.action.findInFiles")
     end
     vim.keymap.set("n", "<leader>sg", liveGrep, { desc = "Show all editors" })
-
 
     -- [[Toggle Comment on normal and visual mode]]
     local function toggleComment()
@@ -125,6 +124,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- [[Create new lines in normal mode]]
+vim.keymap.set('n', '<leader>o', "o<Esc>^Da<Esc>k", { desc = '[O]pen newline below', silent = true })
+vim.keymap.set('n', '<leader>O', "O<Esc>^Da<Esc>j", { desc = '[O]pen newline above', silent = true })
 
 -- [[How to use the Windows clipboard from WSL]] https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 -- g.clipboard = {
