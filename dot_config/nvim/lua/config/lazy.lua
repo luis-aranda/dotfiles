@@ -14,17 +14,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup plugins with lazy for regular Neovim
-if not g.VSCode then
+-- Setup plugins for VScode extension
+if g.vscode then
+  require("lazy").setup({
+    { 'echasnovski/mini.surround', version = '*', config = true }
+  })
+
+  -- Setup plugins for ordinary Neovim
+else
   require("lazy").setup {
     spec = {
       { import = "plugins" },
     }
   }
-
--- Setup plugins with lazy for Vscode Neovim
-else
-  require("lazy").setup({
-    { 'echasnovski/mini.surround', version = '*', config = true }
-  })
 end
