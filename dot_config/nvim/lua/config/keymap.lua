@@ -96,6 +96,9 @@ else
     end, { desc = '[/] Fuzzily search in current buffer' })
 
     vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+    vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = 'Search [G]it [S]tatus' })
+    vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = 'Search [G]it [C]ommits' })
+    vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Search [G]it [B]ranches' })
     vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -142,3 +145,6 @@ vim.keymap.set('n', '<leader>O', "O<Esc>^Da<Esc>j", { desc = '[O]pen newline abo
 --     },
 --     cache_enabled = 0
 -- }
+
+-- Dismiss Noice Message
+vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })

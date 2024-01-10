@@ -33,8 +33,8 @@ opt.incsearch = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-o.updatetime = 250
-o.timeoutlen = 300
+-- o.updatetime = 250
+-- o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'
