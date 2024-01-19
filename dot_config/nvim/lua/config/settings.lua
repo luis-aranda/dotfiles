@@ -41,3 +41,9 @@ o.completeopt = 'menuone,noselect'
 
 -- Enables 24-bit RGC color in the TUI
 opt.termguicolors = true
+
+-- Split windows to the bottom
+opt.splitbelow = true
+
+-- Split windows to the right
+opt.splitright = true
