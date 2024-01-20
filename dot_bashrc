@@ -22,7 +22,7 @@ then
 fi
 
 ### EXPORT ###
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER="nvim +Man!"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
