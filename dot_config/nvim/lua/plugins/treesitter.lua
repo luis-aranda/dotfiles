@@ -1,6 +1,7 @@
 return {
 	-- Highlight, edit, and navigate code
 	'nvim-treesitter/nvim-treesitter',
+	cond = not vim.g.vscode,
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
 	},
@@ -32,7 +33,6 @@ return {
 				'vimdoc',
 				'yaml',
 			},
-
 			-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 			auto_install = false,
 

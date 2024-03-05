@@ -23,14 +23,15 @@ o.undofile = true
 o.ignorecase = true
 o.smartcase = true
 
--- Set highlight on search
-opt.hlsearch = false
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Highlight the searc while typing
 opt.incsearch = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+opt.signcolumn = 'yes'
 
 -- Decrease update time
 -- o.updatetime = 250

@@ -1,17 +1,18 @@
 return {
 
-	-- Git related plugins
-	'tpope/vim-fugitive',
-	'tpope/vim-rhubarb',
-
 	-- Detect tabstop and shiftwidth automatically
-	'tpope/vim-sleuth',
+	{
+		'tpope/vim-sleuth',
+		-- NOTE: Don't load plugin if using VScode Neovim Extension
+		cond = not vim.g.vscode,
+	},
 
 	-- NOTE: This is where your plugins related to LSP can be installed.
 	--  The configuration is done below. Search for lspconfig to find it below.
 	{
 		-- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
+		cond = not vim.g.vscode,
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			{ 'williamboman/mason.nvim', config = true },
@@ -29,6 +30,7 @@ return {
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
+		cond = not vim.g.vscode,
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
 			'L3MON4D3/LuaSnip',
@@ -43,12 +45,16 @@ return {
 	},
 
 	-- cmdline completion
-	'hrsh7th/cmp-cmdline',
+	{
+		'hrsh7th/cmp-cmdline',
+		cond = not vim.g.vscode
+	},
 
 	-- Useful plugin to show you pending keybinds.
 	{
 		'folke/which-key.nvim',
 		event = "VeryLazy",
+		cond = not vim.g.vscode,
 		opts = {
 			defaults = {
 				mode = { "n", "v" },
@@ -66,6 +72,7 @@ return {
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
 		'lewis6991/gitsigns.nvim',
+		cond = not vim.g.vscode,
 		opts = {
 			-- See `:help gitsigns.txt`
 			signs = {
@@ -98,6 +105,7 @@ return {
 	{
 		-- Theme inspired by Atom
 		'navarasu/onedark.nvim',
+		cond = not vim.g.vscode,
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme 'onedark'
@@ -107,6 +115,7 @@ return {
 	{
 		-- Set lualine as statusline
 		'nvim-lualine/lualine.nvim',
+		cond = not vim.g.vscode,
 		-- See `:help lualine.txt`
 		opts = {
 			options = {
@@ -121,6 +130,7 @@ return {
 	{
 		-- Add indentation guides even on blank lines
 		'lukas-reineke/indent-blankline.nvim',
+		cond = not vim.g.vscode,
 		-- Enable `lukas-reineke/indent-blankline.nvim`
 		-- See `:help indent_blankline.txt`
 		main = "ibl",
@@ -128,11 +138,16 @@ return {
 	},
 
 	-- "gc" to comment visual regions/lines
-	{ 'numToStr/Comment.nvim',     opts = {} },
+	{
+		'numToStr/Comment.nvim',
+		cond = not vim.g.vscode,
+		opts = {}
+	},
 
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
+		cond = not vim.g.vscode,
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
@@ -142,6 +157,7 @@ return {
 	-- lazy.nvim
 	{
 		"folke/noice.nvim",
+		cond = not vim.g.vscode,
 		event = "VeryLazy",
 		opts = {
 			-- add any options here
@@ -167,6 +183,33 @@ return {
 		}
 	},
 
-	{ 'echasnovski/mini.surround', version = '*', config = true },
+	-- Highlight todo, notes, etc in comments
+	{
+		'folke/todo-comments.nvim',
+		cond = not vim.g.vscode,
+		event = 'VimEnter',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = { signs = false }
+	},
 
+	-- Collection of various small independent plugins/modules
+	{
+		'echasnovski/mini.nvim',
+		config = function()
+			-- Better Around/Inside textobjects
+			--
+			-- Examples:
+			--  - va)  - [V]isually select [A]round [)]paren
+			--  - yinq - [Y]ank [I]nside [N]ext [']quote
+			--  - ci'  - [C]hange [I]nside [']quote
+			require('mini.ai').setup { n_lines = 500 }
+
+			-- Add/delete/replace surroundings (brackets, quotes, etc.)
+			--
+			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+			-- - sd'   - [S]urround [D]elete [']quotes
+			-- - sr)'  - [S]urround [R]eplace [)] [']
+			require('mini.surround').setup()
+		end
+	}
 }
