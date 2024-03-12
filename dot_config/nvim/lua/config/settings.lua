@@ -1,6 +1,5 @@
 local g = vim.g
 local opt = vim.opt
-local o = vim.o
 
 -- Set the leader key to space
 g.mapleader = ' '
@@ -14,14 +13,14 @@ opt.relativenumber = true
 opt.mouse = "a"
 
 -- Every wrapped line will continue visually indented
-o.breakindent = true
+opt.breakindent = true
 
 -- Save undo history
-o.undofile = true
+opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-o.ignorecase = true
-o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
@@ -34,11 +33,11 @@ opt.incsearch = true
 opt.signcolumn = 'yes'
 
 -- Decrease update time
--- o.updatetime = 250
--- o.timeoutlen = 300
+opt.updatetime = 250
+opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-o.completeopt = 'menuone,noselect'
+opt.completeopt = 'menuone,noselect'
 
 -- Enables 24-bit RGC color in the TUI
 opt.termguicolors = true
