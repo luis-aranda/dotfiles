@@ -13,6 +13,6 @@ return { -- You can easily change to a different colorscheme.
 		vim.cmd.colorscheme("onedark")
 
 		-- You can configure highlights by doing something like:
-		vim.cmd.hi("Comment gui=none")
+		vim.cmd.hi("Visual guifg=White guibg=#9560a8 gui=none")
 	end,
 }

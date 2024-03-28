@@ -31,7 +31,7 @@ vim.keymap.set("n", "]d", gotoNextProblem, { desc = "Go to next [D]iagnostic mes
 -- vim.keymap.set("n", "<leader>e", showProblemView, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", showQuickfixList, { desc = "Open diagnostic [Q]uickfix list" })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. 
+-- for people to discover.
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
