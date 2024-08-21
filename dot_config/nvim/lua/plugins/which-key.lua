@@ -21,7 +21,7 @@ return { -- Useful plugin to show you pending keybinds.
 		require("which-key").setup()
 
 		-- Document existing key chains
-		require("which-key").register({
+		require("which-key").add({
 			["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
 			["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
 			["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
@@ -30,3 +30,4 @@ return { -- Useful plugin to show you pending keybinds.
 		})
 	end,
 }
+
