@@ -23,6 +23,24 @@ vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- Check if running inside WSL, then set the clipboard to use clip.exe for copy and powershell console out write method
+-- Make sure that PowerShell execution policy is not set to Restricted
+-- See `:help clipboard-wsl`
+if os.getenv("WSL_DISTRO_NAME") ~= nil then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
