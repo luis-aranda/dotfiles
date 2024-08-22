@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 ### PATH ###
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/bin" ] ;
+  then PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/bin" ] ;
@@ -171,8 +171,8 @@ function cat() {
 	fi
 }
 
-# Setting the starship prompt
-eval "$(starship init bash)"
+# Setting prompt in oh-my-posh
+eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/onedark.omp.json)"
 
 # Setting Z replacement (zoxide)
 eval "$(zoxide init bash)"
