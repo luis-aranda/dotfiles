@@ -53,8 +53,9 @@ return { -- LSP Configuration & Plugins
 				--
 				-- In this case, we create a function that lets us more easily define mappings specific
 				-- for LSP related items. It sets the mode, buffer and description for us each time.
-				local map = function(keys, func, desc)
-					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+				local map = function(keys, func, desc, mode)
+					mode = mode or "n"
+					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
 				-- Jump to the definition of the word under your cursor.
@@ -88,7 +89,7 @@ return { -- LSP Configuration & Plugins
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
 				-- Opens a popup that displays documentation about the word under your cursor
 				--  See `:help K` for why this keymap.
@@ -144,8 +145,8 @@ return { -- LSP Configuration & Plugins
 			-- Some languages (like typescript) have entire language plugins that can be useful:
 			--    https://github.com/pmizio/typescript-tools.nvim
 			--
-			-- But for many setups, the LSP (`tsserver`) will work just fine
-			-- tsserver = {},
+			-- But for many setups, the LSP (`ts_ls`) will work just fine
+			-- ts_ls = {},
 			--
 
 			lua_ls = {
@@ -186,7 +187,7 @@ return { -- LSP Configuration & Plugins
 					local server = servers[server_name] or {}
 					-- This handles overriding only values explicitly passed
 					-- by the server configuration above. Useful when disabling
-					-- certain features of an LSP (for example, turning off formatting for tsserver)
+					-- certain features of an LSP (for example, turning off formatting for ts_ls)
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,
