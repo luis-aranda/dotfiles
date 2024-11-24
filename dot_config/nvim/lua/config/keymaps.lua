@@ -62,6 +62,17 @@ end
 -- Show Explorer
 vim.keymap.set("n", "<leader>e", showExplorer, { desc = "Show [E]xplorer" })
 
+local function openParentDirectory()
+	if vim.g.vscode then
+		require("vscode-neovim").action("workbench.view.explorer")
+	else
+		pcall(vim.cmd.Oil)
+	end
+end
+
+-- Oil
+vim.keymap.set("n", "-", openParentDirectory, { desc = "Open parent directory" })
+
 -- [[VSCode Neovim keymaps]]
 if vim.g.vscode then
 	local function reloadVSCode()
