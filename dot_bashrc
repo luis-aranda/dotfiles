@@ -172,10 +172,17 @@ function cat() {
 }
 
 # Setting prompt in oh-my-posh
-eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/onedark.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/xcad_tdl.omp.json)"
 
 # Setting Z replacement (zoxide)
 eval "$(zoxide init bash)"
+
+# Start the ssh-agent and set up the environment variables needed for it to function properly.
+# This should only run on WSL and it is useful to make ssh work with GitHub 
+# https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+if [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+	eval "$(ssh-agent -s)" > /dev/null
+fi
 
 # Registering fzf shell extensions
 # shellcheck source=~/.fzf.bash
