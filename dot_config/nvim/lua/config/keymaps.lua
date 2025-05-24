@@ -30,6 +30,7 @@ vim.keymap.set("n", "[d", gotoPreviousProblem, { desc = "Go to previous [D]iagno
 vim.keymap.set("n", "]d", gotoNextProblem, { desc = "Go to next [D]iagnostic message" })
 -- vim.keymap.set("n", "<leader>e", showProblemView, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", showQuickfixList, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "[P]aste without yanking" })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover.
 --
